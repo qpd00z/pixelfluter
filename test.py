@@ -21,49 +21,42 @@ draw_circle             = True      # draw single circle
 render_char             = True      # render single char
 render_text             = True      # render text
 
+# clear screen
+def clr(conn):
+    if clear_screen:
+        conn.clear_screen()
+
 # test client functions with some nice maker kids presets
 def test(conn):
 
     # clear screen
-    if clear_screen:
-        conn.clear_screen()
+    clr(conn)
 
     # draw image full screen
     if draw_image:
         conn.draw_image("mklogo.png")
-
-        # clear screen
-        if clear_screen:
-            conn.clear_screen()
+        clr(conn)  # clear screen
 
     # draw image parametric
     if draw_image_parametric:
         conn.draw_image("tastaturtstern.png", 350, 248, 100, 100)
-
-        # clear screen
-        if clear_screen:
-            conn.clear_screen()
+        clr(conn)  # clear screen
 
     # magic logo flood
     if magic_logo_flood:
         conn.magic_logo_flood("tastaturtstern.png", 100, 100, 200)
-
-        # clear screen
-        if clear_screen:
-            conn.clear_screen()
+        clr(conn)  # clear screen
 
     # draw single circle       (                           )
     if draw_circle:
         conn.draw_circle(50, 400, 300, 255, 255, 255)
-
-        # clear screen
-        if clear_screen:
-            conn.clear_screen()
+        clr(conn)  # clear screen
 
     # render single char
     if render_char:
         # parameters:    (c,  r,   g,   b,   a,   px_size, pos_x, pos_y)
         conn.render_char("A", 255, 255, 255, 255, 10,      40,    250)
+        clr(conn)  # clear screen
 
     # render text
     if render_text:
