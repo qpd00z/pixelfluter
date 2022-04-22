@@ -4,11 +4,6 @@ from pixelflut import Pixelflut
 local = True
 remote = False
 
-# set local connection (127.0.0.1)
-conn_local = Pixelflut()
-
-# set remote connection to ip of your remote pixelflut server
-conn_remote = Pixelflut("192.168.178.83")
 
 ######################################################################
 #                           TEST OPTIONS                             #
@@ -56,7 +51,7 @@ def test(conn):
     if render_char:
         # parameters:    (c,  r,   g,   b,   a,   px_size, pos_x, pos_y)
         conn.render_char("A", 255, 255, 255, 255, 10,      40,    250)
-        clr(conn)  # clear screen
+        clr(conn)  # clear screenpix
 
     # render text
     if render_text:
@@ -67,9 +62,12 @@ def test(conn):
         conn_local.render_text("Der komplett verwahrloste Franz jagt im fixen Taxi quer durch Bayern!", 255, 255, 255, 255,
                            1, 40, 200)
 
-if local:
+# set local connection (127.0.0.1)
+if local == True:
+    conn_local = Pixelflut()
     test(conn_local)
 
-if remote:
+# set remote connection to ip of your remote pixelflut server
+if remote == True:
+    conn_remote = Pixelflut("192.168.178.83")
     test(conn_remote)
-
